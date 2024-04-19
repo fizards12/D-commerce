@@ -1,0 +1,15 @@
+#backdrop{
+    position: absolute;
+    z-index: 25;
+}
+
+#notification{
+    position: fixed;
+    top: 0;
+    z-index: 30;
+    width: 100%;
+}
+
+.rounded-circle{
+    border-radius: 9999px;
+}
