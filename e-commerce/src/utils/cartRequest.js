@@ -1,6 +1,5 @@
 import axios from "axios";
 import { fetchingRequest } from "./fetching";
-import { json } from "react-router-dom";
 const baseURL = "http://localhost:3000/api/";
 export const fetchingCart = async () => {
   try {

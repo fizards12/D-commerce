@@ -12,13 +12,16 @@ const Button = ({
   
 
   if (size === "lg") {
-    buttonClass += ` px-5 py-3 rounded-lg text-base`;
+    buttonClass += ` px-2 py-2 min-h-10 max-h-10 rounded-lg text-base`;
+  }
+  if (size === "md") {
+    buttonClass += ` px-1 py-1 min-h-9 max-h-9 rounded-md text-sm`;
   }
   if (size === "sm") {
-    buttonClass += ` px-2 py-2 rounded-md text-xs`;
+    buttonClass += ` px-1 py-1 min-h-8 max-h-8 rounded-sm text-xs`;
   }
   if (size === "xs"){
-    buttonClass += ` px-1 py-1 rounded-sm text-xs`;
+    buttonClass += ` px-1 py-1 min-h-7 max-h-7 rounded-sm text-xs`;
   }
   if (mode === "fill") {
     buttonClass += " bg-blue-900 text-blue-100 hover:bg-blue-800 active:bg-blue-950";
@@ -30,7 +33,7 @@ const Button = ({
     buttonClass += " border-0 text-blue-900 hover:text-blue-950 active:text-blue-800";
   }
   return (
-    <button type={type || "button"} className={buttonClass + " "} {...props}>
+    <button type={type || "button"} className={buttonClass +" disabled:bg-gray-400 disabled:text-gray-700"} {...props}>
       {children}
     </button>
   );

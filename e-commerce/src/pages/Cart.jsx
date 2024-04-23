@@ -1,8 +1,6 @@
-import React from "react";
-import CartItem from "../../components/CartItems/CartItem";
-import iphone from "../../assets/product-item1.jpg";
+import CartItem from "../components/CartItems/CartItem";
 import { useSelector } from "react-redux";
-import Button from "../../components/UI/Button/Button";
+import Button from "../components/UI/Button/Button";
 const Cart = () => {
   const { totalPrice, products } = useSelector((state) => state.cart);
   return (

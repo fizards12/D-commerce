@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Navbar from "../UI/Navbar/Navbar";
 import useMaxBreakPoint from "../../Hooks/use-maxBreakPoint";
 import Button from "../UI/Button/Button";
@@ -9,10 +8,8 @@ import { IoDiamond } from "react-icons/io5";
 import Backdrop from "../UI/Backdrop";
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "../UI/Badge/Badge";
-import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../../store/cart";
-import { getCartProducts } from "../../store/cart/cartActions";
-
+import { useSelector } from "react-redux";
+import { TiThMenuOutline } from "react-icons/ti";
 const Navigation = () => {
   const isBreaked = useMaxBreakPoint("768");
   const [value, toggleHandler] = useToggle();
@@ -26,16 +23,18 @@ const Navigation = () => {
   return (
     <div className={`flex flex-col`}>
       <Navbar>
-        <Navbar.Brand title="E-Comm">
+        <Navbar.Brand title="Diamond">
           <Link to={"/"}>
-            <IoDiamond /> <b className="md:hidden">E</b>
+            <IoDiamond />
           </Link>
         </Navbar.Brand>
-        <Navbar.List>
+
+        <Navbar.List show={value || !isBreaked}>
           <Navbar.ListItem>
             <Navbar.Link to={"/add-product"}>Add Product</Navbar.Link>
           </Navbar.ListItem>
         </Navbar.List>
+
         <Navbar.Actions>
           <Button mode="text" size="sm">
             <FaRegUserCircle size={25} />
@@ -48,6 +47,11 @@ const Navigation = () => {
           >
             <FaCartShopping size={25} />
           </Badge>
+          {isBreaked && (
+            <Button mode="text" size="xs" onClick={toggleHandler}>
+              <TiThMenuOutline size={25} />
+            </Button>
+          )}
         </Navbar.Actions>
       </Navbar>
       <Backdrop clickHandler={clickHandler} show={isBreaked && value} />

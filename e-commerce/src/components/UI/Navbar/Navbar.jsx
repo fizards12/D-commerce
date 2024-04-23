@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { TfiMenuAlt } from "react-icons/tfi";
 import Button from "../Button/Button";
-
+import { AnimatePresence, motion } from "framer-motion";
 const Navbar = ({ children, className = "", ...props }) => {
   return (
     <nav
@@ -27,7 +27,7 @@ Navbar.Brand = ({
   Logo,
   className = "",
   LogoClass = "",
-  title="",
+  title = "",
   children,
   ...props
 }) => {
@@ -43,11 +43,22 @@ Navbar.Brand = ({
   );
 };
 
-Navbar.List = ({show=true, children, className = "", ...props }) => {
-  return show && (
-    <ul
-      {...props}
-      className={`${className} list-none flex items-center justify-between
+Navbar.List = function List({
+  show = true,
+  children,
+  className = "",
+  ...props
+}) {
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.ul
+          initial={{ opacity: 0, translateY: -100 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          exit={{ opacity: 0, translateY: -100 }}
+          transition={{ type: "spring",mass:1, damping:15,stiffness:200 }}
+          {...props}
+          className={`${className} list-none flex items-center justify-between
          max-md:flex-col 
          max-md:items-start 
          max-md:w-full 
@@ -57,9 +68,11 @@ Navbar.List = ({show=true, children, className = "", ...props }) => {
          max-md:z-30
        max-md:bg-slate-800
        max-md:text-slate-200`}
-    >
-      {children}
-    </ul>
+        >
+          {children}
+        </motion.ul>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -83,7 +96,9 @@ Navbar.Link = ({ children, activeClass, className = "", ...props }) => {
   let active = activeClass || `md:font-bold max-md:bg-gray-950`;
   return (
     <NavLink
-      className={({ isActive }) => `${className} lg:bg- p-4 w-full ` + (isActive ? active : "")}
+      className={({ isActive }) =>
+        `${className} lg:bg- p-4 w-full ` + (isActive ? active : "")
+      }
       {...props}
     >
       {children}

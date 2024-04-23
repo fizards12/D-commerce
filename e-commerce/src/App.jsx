@@ -1,15 +1,15 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import RootPage from "./pages/RootPage";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import AddProduct, { action } from "./components/Products/AddProduct";
 import ErrorPage from "./pages/ErrorPage";
-import Cart from "./pages/Cart/Cart";
+import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
 import store from "./store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useEffect } from "react";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 export const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "cart", element: <Cart /> },
       { path: "add-product", element: <AddProduct />, action: action },
+      {path: "auth", children: [
+        {index: true, element: <Login/>},
+        {path: "register", element: <Register/>},
+      ]}
     ],
   },
 ]);

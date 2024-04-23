@@ -1,10 +1,10 @@
-import { cartActions, cartApiSlice } from ".";
+import { cartActions} from ".";
 import {
   addItemRequest,
   deleteItemRequest,
   fetchingCart,
   updateItemRequest,
-} from "../../utlis/cartRequest";
+} from "../../utils/cartRequest";
 import { notifyActions } from "../ui/notification";
 export const getCartProducts = () => async (dispatch) => {
   try {
@@ -84,7 +84,7 @@ export const deleteItem = (itemId) => async (dispatch) => {
     })
   );
   try {
-    const result = await deleteItemRequest(itemId);
+    await deleteItemRequest(itemId);
     dispatch(cartActions.removeProduct(itemId));
     dispatch(
       notifyActions.setNotification({
@@ -104,3 +104,32 @@ export const deleteItem = (itemId) => async (dispatch) => {
     dispatch(notifyActions.initiate());
   }, 1000);
 };
+
+export const updateCart = (item)=> async (dispatch) => {
+  dispatch(
+    notifyActions.setNotification({
+      message: "Updating cart item...",
+      status: "fetching",
+      show: true,
+    })
+  );
+  try {
+    await updateItemRequest(item);
+    dispatch(
+      notifyActions.setNotification({
+        message: "Cart Item updated successfully.",
+        status: "success",
+      })
+    );
+  } catch (error) {
+    dispatch(
+      notifyActions.setNotification({
+        message: error.message,
+        status: "error",
+      })
+    );
+  }
+  setTimeout(() => {
+    dispatch(notifyActions.initiate());
+  }, 1500);
+}
