@@ -12,16 +12,16 @@ const Button = ({
   
 
   if (size === "lg") {
-    buttonClass += ` px-2 py-2 min-h-10 max-h-10 rounded-lg text-base`;
+    buttonClass += ` px-10 py-2 min-h-12 max-h-12 rounded-md text-base font-semibold`;
   }
   if (size === "md") {
-    buttonClass += ` px-1 py-1 min-h-9 max-h-9 rounded-md text-sm`;
+    buttonClass += ` px-7 py-1 min-h-11 max-h-11 rounded-md text-sm font-semibold`;
   }
   if (size === "sm") {
-    buttonClass += ` px-1 py-1 min-h-8 max-h-8 rounded-sm text-xs`;
+    buttonClass += ` px-4 py-1 min-h-9 max-h-9 rounded-sm text-xs`;
   }
   if (size === "xs"){
-    buttonClass += ` px-1 py-1 min-h-7 max-h-7 rounded-sm text-xs`;
+    buttonClass += ` px-2 py-1 min-h-8 max-h-8 rounded-sm text-xs`;
   }
   if (mode === "fill") {
     buttonClass += " bg-blue-900 text-blue-100 hover:bg-blue-800 active:bg-blue-950";

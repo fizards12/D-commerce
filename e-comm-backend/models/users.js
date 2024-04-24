@@ -36,6 +36,10 @@ const userSchema = new Schema({
   refreshToken: {
     type: String,
   },
+  cartItems: [{
+    type: Schema.Types.ObjectId,
+    ref: "Cart"
+  }]
   // Orders:[{
   //     type: Types.ObjectId,
   //     ref: "Order"

@@ -10,6 +10,7 @@ import store from "./store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Auth from "./pages/Auth";
 export const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "cart", element: <Cart /> },
       { path: "add-product", element: <AddProduct />, action: action },
-      {path: "auth", children: [
+      {path: "auth",element: <Auth/>, children: [
         {index: true, element: <Login/>},
         {path: "register", element: <Register/>},
       ]}
