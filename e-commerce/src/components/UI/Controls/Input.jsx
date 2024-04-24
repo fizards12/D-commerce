@@ -14,7 +14,7 @@ function Input({ status, size = "md", className, ...props }) {
   return (
     <input
       className={`${className || ""} 
-      ${classes}  
+      ${props.type === "text" ? classes : ""}  
       border-px border-slate-400 border-solid 
       focus:border-2 focus:outline-none
       p-2

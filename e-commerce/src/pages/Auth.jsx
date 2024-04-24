@@ -33,7 +33,7 @@ function Auth() {
             </p>
           }
         </div>
-        <div className="w-full md:max-w-md bg-opacity-50 bg-slate-200 rounded-md p-5">
+        <div className="w-full md:max-w-md bg-opacity-60 bg-slate-300 rounded-md p-5">
           <Outlet />
         </div>
       </div>

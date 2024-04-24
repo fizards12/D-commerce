@@ -28,6 +28,18 @@ function Register() {
         </ControlGroup.Label>
         <ControlGroup.Input id={"confirm-password"} type={"password"} />
       </ControlGroup>
+      <ControlGroup className={"flex flex-row items-center gap-2"}>
+      <ControlGroup.Input type={"radio"} name={"role"} />
+        <ControlGroup.Label>
+          Customer
+        </ControlGroup.Label>
+      </ControlGroup>
+      <ControlGroup className={"flex flex-row items-center gap-2"}>
+      <ControlGroup.Input type={"radio"} name={"role"} />
+        <ControlGroup.Label>
+          Seller
+        </ControlGroup.Label>
+      </ControlGroup>
       <div className="w-full flex justify-center mt-5">
         <Button type={"submit"} size="md">Sign Up</Button>
       </div>
