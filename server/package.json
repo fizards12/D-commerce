@@ -1,5 +1,5 @@
 {
-  "name": "e-comm-backend",
+  "name": "server",
   "version": "1.0.0",
   "description": "Providing the CRUD operations to manipulate the data stored on Monogo database",
   "main": "app.js",
